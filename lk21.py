@@ -122,10 +122,7 @@ def downld2(url,judul):
 
 if __name__ == "__main__":
 	os.system('clear')
-	print("LayarKaca21 Downloader")
-	try:
-		
-	except: pass
+	print("-LayarKaca21 Downloader")
 
 	try:
 		que=input("Search Movie: ")
