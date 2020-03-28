@@ -26,7 +26,7 @@ def search(query):
 		print("Not found, try different search..")
 		return True
 	
-	print((f'\33[34m'+"\nResult (Can't find your movie? Try another keyword.)"+'\33[0m'))
+	print(f'\33[34m'+"\nResult (Can't find your movie? Try another keyword.)"+'\33[0m')
 	for x in info['title']:
 		print(f"{c}. {x[0]}")
 		c+=1
