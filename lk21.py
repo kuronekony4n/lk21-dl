@@ -23,15 +23,15 @@ def search(query):
 		tit=i.find('a',{'rel':'bookmark'})
 		info['title'].append((tit.text, tit['href']))
 	if len(info['title']) == 0:
-		print("Tidak dapat menemukan judul film")
+		print("Not found, try different search..")
 		return True
 	
-	print("\n\t[ Result ]")
+	print("\nResult ")
 	for x in info['title']:
 		print(f"{c}. {x[0]}")
 		c+=1
 
-	pil=int(input("_> pilih: "))
+	pil=int(input("_> Choose Number: "))
 	if pil <= 0:
 		print("index out of ranges")
 		return True
@@ -77,24 +77,20 @@ def bypass(url,judul):
 		rg3=re.findall(r'https://layarkacaxxi.org/f/(.*?)"',req5.text)[0]
 	except:
 		print("\n !Failed to bypass")
-		tan=input("[?] Anda ingin melanjutkannya ke website layarkaca21 (y/n) ")
-		if tan.lower() == 'y':
-			click.launch(info['title'][pil-1][1])
-		else:
-			sys.exit("okay bye bye:*")
+
 #	print(rg3)
 
 	req6=ses.get(f'https://layarkacaxxi.org/f/{rg3}')
 	try:
 		rg4=re.findall(r"post\('(.*?)', ",req6.text)[0]
 	except:
-		raise Exception("\nDCMATakedown: Video tidak tersedia")
+		raise Exception("\nDCMATakedown: Video not available")
 #	print(rg4)
 
 	req7=ses.post(f'https://layarkacaxxi.org{rg4}')
 	js=json.loads(req7.text)
 
-	print("\n\t[ Resulution ]")
+	print("\n Select Resolution")
 	for x in js['data']:
 		print(f"{cc}. {x['label']}")
 		cc+=1
@@ -120,26 +116,19 @@ def downld2(url,judul):
 				f.write(data)
 	t.close()
 	if total_size != 0 and t.n != total_size:
-		print("\n[Warn] Download GAGAL")
-		tan=input("[?] anda ingin melanjutkannya ke website layarkaca21 (y/n) ")
-		if tan.lower() == 'y':
-			click.launch(info['title'][pil-1][1])
-		else:
-			sys.exit("okay bye bye:*")
+		print("\n[Warn] Download Failed.")
+
 	print('\n[OK] File saved in result\n')
 
 if __name__ == "__main__":
 	os.system('clear')
-	print("""
-	[ LayarKaca21 Downloader ]
-	      | by: Noobie |
-""")
+	print("LayarKaca21 Downloader")
 	try:
 		os.mkdir('result')
 	except: pass
 
 	try:
-		que=input("query search: ")
+		que=input("search movie: ")
 		search(que)
 	except Exception as Err:
 		print(Err)
