@@ -90,7 +90,7 @@ def bypass(url,judul):
 	req7=ses.post(f'https://layarkacaxxi.org{rg4}')
 	js=json.loads(req7.text)
 
-	print(f'\33[34m'+'\nSelect Resolution'+'\33[0m')
+	print('\nSelect Resolution')
 	for x in js['data']:
 		print(f"{cc}. {x['label']}")
 		cc+=1
