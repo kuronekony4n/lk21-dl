@@ -26,7 +26,7 @@ def search(query):
 		print("Not found, try different search..")
 		return True
 	
-	print(f'\33[34m'+"\nResult (Can't find your movie? Try another keyword.)"+'\33[0m')
+	print("\nResult (Can't find your movie? Try another keyword.)")
 	for x in info['title']:
 		print(f"{c}. {x[0]}")
 		c+=1
@@ -105,7 +105,7 @@ def bypass(url,judul):
 def downld2(url,judul):
 	r = ses.get(url, stream=True)
 	total_size = int(r.headers.get('content-length', 0))
-	print(f'\33[32m'+'\nDownloading {judul}'+'\33[0m')
+	print(f'\nDownloading {judul}')
 	print(f"['{url}']")
 	block_size = 1024
 	t=tqdm(total=total_size, unit='iB', unit_scale=True)
@@ -118,7 +118,7 @@ def downld2(url,judul):
 	if total_size != 0 and t.n != total_size:
 		print("\n[Warn] Download Failed.")
 
-	print(f'\33[32m'+'\n[OK] File saved in #FileBender folder\n'+'\33[0m')
+	print('\n[OK] File saved in #FileBender folder\n')
 
 if __name__ == "__main__":
 	os.system('clear')
