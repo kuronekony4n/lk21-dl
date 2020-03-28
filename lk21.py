@@ -26,7 +26,7 @@ def search(query):
 		print("Not found, try different search..")
 		return True
 	
-	print("\nResult (Can't find your movie? Try another keyword.)")
+	print((f'\33[34m'+'\nResult (Can't find your movie? Try another keyword.)'+'\33[0m'))
 	for x in info['title']:
 		print(f"{c}. {x[0]}")
 		c+=1
@@ -90,7 +90,7 @@ def bypass(url,judul):
 	req7=ses.post(f'https://layarkacaxxi.org{rg4}')
 	js=json.loads(req7.text)
 
-	print("\n Select Resolution")
+	print(f'\33[34m'+'\nSelect Resolution'+'\33[0m')
 	for x in js['data']:
 		print(f"{cc}. {x['label']}")
 		cc+=1
@@ -105,7 +105,7 @@ def bypass(url,judul):
 def downld2(url,judul):
 	r = ses.get(url, stream=True)
 	total_size = int(r.headers.get('content-length', 0))
-	print(f"\n# Downloading {judul}")
+	print(f'\33[32m'+'\nDownloading {judul}'+'\33[0m')
 	print(f"['{url}']")
 	block_size = 1024
 	t=tqdm(total=total_size, unit='iB', unit_scale=True)
@@ -123,7 +123,6 @@ def downld2(url,judul):
 if __name__ == "__main__":
 	os.system('clear')
 	print("-LayarKaca21 Downloader")
-
 	try:
 		que=input("Search Movie: ")
 		search(que)
