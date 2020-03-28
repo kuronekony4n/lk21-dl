@@ -26,17 +26,17 @@ def search(query):
 		print("Not found, try different search..")
 		return True
 	
-	print("\nResult ")
+	print("\nResult (Can't find your movie? Try another keyword.)")
 	for x in info['title']:
 		print(f"{c}. {x[0]}")
 		c+=1
 
-	pil=int(input("_> Choose Number: "))
+	pil=int(input("Choose Number: "))
 	if pil <= 0:
 		print("index out of ranges")
 		return True
 
-	print(" *Bypassing, please wait...")
+	print("Bypassing, please wait...")
 	bypass(info['title'][pil-1][1], info['title'][pil-1][0])
 
 def bypass(url,judul):
@@ -95,7 +95,7 @@ def bypass(url,judul):
 		print(f"{cc}. {x['label']}")
 		cc+=1
 
-	lih=int(input("_> pilih: "))
+	lih=int(input("Choose Number: "))
 	if lih <= 0:
 		print("index out of ranges")
 		return True
@@ -109,7 +109,7 @@ def downld2(url,judul):
 	print(f"['{url}']")
 	block_size = 1024
 	t=tqdm(total=total_size, unit='iB', unit_scale=True)
-	with open(f'result/{judul.replace("/",",")}.mp4','wb') as f:
+	with open(f'/content/drive/My Drive/#FileBender/Lk21-dl/{judul.replace("/",",")}.mp4','wb') as f:
 		for data in r.iter_content(chunk_size=block_size):
 			if data:
 				t.update(len(data))
@@ -118,17 +118,17 @@ def downld2(url,judul):
 	if total_size != 0 and t.n != total_size:
 		print("\n[Warn] Download Failed.")
 
-	print('\n[OK] File saved in result\n')
+	print('\n[OK] File saved in #FileBender folder\n')
 
 if __name__ == "__main__":
 	os.system('clear')
 	print("LayarKaca21 Downloader")
 	try:
-		os.mkdir('result')
+		
 	except: pass
 
 	try:
-		que=input("search movie: ")
+		que=input("Search Movie: ")
 		search(que)
 	except Exception as Err:
 		print(Err)
