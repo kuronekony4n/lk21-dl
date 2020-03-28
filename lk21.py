@@ -118,7 +118,7 @@ def downld2(url,judul):
 	if total_size != 0 and t.n != total_size:
 		print("\n[Warn] Download Failed.")
 
-	print('\n[OK] File saved in #FileBender folder\n')
+	print(f'\33[32m'+'\n[OK] File saved in #FileBender folder\n'+'\33[0m')
 
 if __name__ == "__main__":
 	os.system('clear')
